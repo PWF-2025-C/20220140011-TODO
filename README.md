@@ -64,3 +64,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+Breeze Instalasi
+![Screenshot (217)](https://github.com/user-attachments/assets/a8c77eb8-9f34-465c-9ea5-52e0d95a4f99)
+![Screenshot (218)](https://github.com/user-attachments/assets/03416e93-d6d4-4533-a226-7fa1cebfbaf0)
+![Screenshot (219)](https://github.com/user-attachments/assets/22b70ee6-a137-49db-b6a4-dd4e8566189c)
+
+Web.php
+![Screenshot (222)](https://github.com/user-attachments/assets/6bd58e76-520d-4810-ad6f-3c510140e87b)
+
+Login User
+![Screenshot (220)](https://github.com/user-attachments/assets/069049a7-3644-45e9-8769-e2148e34b502)
+
+Database
+![Screenshot (221)](https://github.com/user-attachments/assets/9c8e8c00-5a00-4fd0-a013-895cb5cb4595)
