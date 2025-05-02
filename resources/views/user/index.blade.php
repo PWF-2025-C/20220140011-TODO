@@ -8,9 +8,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg px-4 py-6">
-                <div class="px-6 pt-6 mb-5 w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
+                <div class="px-6 w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
                     @if (request('search'))
-                        <h2 class="pb-3 text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+                        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
                             Search results for: <strong>{{ request('search') }}</strong>
                         </h2>
                     @endif
@@ -31,7 +31,7 @@
                     </form>
                 </div>
 
-                <div class="px-6 text-xl text-gray-900 dark:text-gray-100">
+                <div class="mt-6 px-6 text-xl text-gray-900 dark:text-gray-100">
                     <div class="flex items-center justify-between">
                         <div></div>
 
@@ -89,10 +89,34 @@
                                             </span>
                                         </p>
                                     </td>
-                                    <td class="px-6 py-4">
-                                        <div class="flex space-x-3">
-                                            <a href="{{ route('user.view', $data) }}" class="text-blue-400 hover:underline transition duration-150 ease-in-out">Edit</a>
-                                        </div>
+                                    <td class="px-6 py-4 w-auto">
+                                        <div class="flex justify-center items-center space-x-6 gap-2 w-full">
+                                        @if ($data->is_admin)
+                                            <form action="{{ route('user.removeadmin', $data) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="text-blue-600 dark:text-blue-400 whitespace-nowrap">
+                                                    Remove Admin    
+                                                </button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('user.makeadmin', $data) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="text-red-600 dark:text-red-400 whitespace-nowrap">
+                                                    Make Admin    
+                                                </button>
+                                            </form>
+                                        @endif
+                                        <form action="{{ route('user.destroy', $data) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                    class="text-red-600 dark:text-red-400 whitespace-nowrap">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                     </td>
                                 </tr>
                             @empty
