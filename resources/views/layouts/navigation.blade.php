@@ -18,9 +18,11 @@
                     <x-nav-link :href="route('todo.view')" :active="request()->routeIs('todo.view')">
                         {{ __('Todo') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('user.view')" :active="request()->routeIs('user.view')">
-                        {{ __('User') }}
-                    </x-nav-link>
+                    @can('admin')
+                        <x-nav-link :href="route('user.view')" :active="request()->routeIs('user.view')">
+                            {{ __('User') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -79,9 +81,12 @@
             <x-responsive-nav-link :href="route('todo.view')" :active="request()->routeIs('todo.view')">
                 {{ __('Todo') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('user.view')" :active="request()->routeIs('user.view')">
-                {{ __('User') }}
-            </x-responsive-nav-link>
+
+            @can('admin')
+                <x-responsive-nav-link :href="route('user.view')" :active="request()->routeIs('user.view')">
+                    {{ __('User') }}
+                </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
