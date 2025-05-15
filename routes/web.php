@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
@@ -28,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/todo/{todo}/uncomplete', [TodoController::class, 'uncomplete'])->name('todo.uncomplete');
     Route::delete('/todo/{todo}', [TodoController::class, 'destroy'])->name('todo.destroy');
     Route::delete('/todo', [TodoController::class, 'destroyCompleted'])->name('todo.deleteallcompleted');
-
+    Route::resource('category', CategoriesController::class)->except(['show']);
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

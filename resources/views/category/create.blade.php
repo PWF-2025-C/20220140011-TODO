@@ -1,15 +1,7 @@
 <x-app-layout>
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        @vite('resources/css/app.css')
-    </head>
-
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-
-        200">
-            {{ 'Todo' }}
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Create Category') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -17,7 +9,7 @@
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg
                 dark:bg-gray-800">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('todo.store') }}">
+                    <form method="POST" action="{{ route('category.store') }}">
                         @csrf
                         @method('POST')
                         <div class="mb-6">
@@ -27,20 +19,9 @@
                             <x-input-error class="mt-2" :messages="$errors->get('title')" />
                         </div>
 
-                        <div class="mb-6">
-                            <x-input-label for="category_id" :value="__('Category')" />
-                            <x-select id="category_id" name="category_id" class="block w-full mt-1">
-                                <option value="">Empty</option>
-                                @foreach ($categories as $data)
-                                    <option value="{{ $data->id }}">{{ $data->title }}</option>
-                                @endforeach
-                            </x-select>
-                            <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
-                        </div>
-
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ 'Save' }}</x-primary-button>
-                            <a href="{{ route('todo.view') }}"
+                            <a href="{{ route('category.index') }}"
                                 class="inline-flex items-center px-4 py-2 text-xs fonst-
                             semibold tracking-widest
                             text-gray-700 uppercase transition duration-150 ease-in-out
