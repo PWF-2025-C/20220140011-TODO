@@ -33,8 +33,6 @@
 
                 <div class="mt-6 px-6 text-xl text-gray-900 dark:text-gray-100">
                     <div class="flex items-center justify-between">
-                        <div></div>
-
                         @if (session('success'))
                             <p x-data="{ show: true }" x-show="show" x-transition
                                x-init="setTimeout(() => show = false, 5000)"
@@ -54,7 +52,7 @@
                 </div>
 
                 <div class="relative overflow-x-auto flex justify-center">
-                    <table class="w-full max-w-4xl text-sm text-left text-gray-500 dark:text-gray-400">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-4">Id</th>

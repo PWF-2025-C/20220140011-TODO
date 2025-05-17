@@ -13,6 +13,8 @@ class Category extends Model
         'title', 'user_id'
     ];
 
+    protected $with = ['todos'];
+
     public function todos() 
     {
         return $this->hasMany(Todo::class, 'category_id');

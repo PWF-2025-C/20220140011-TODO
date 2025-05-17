@@ -10,7 +10,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Category::where('user_id', Auth::id())->withCount('todos')->orderBy('title', 'asc')->get();
+        $categories = Category::with('todos')->where('user_id', Auth::id())->withCount('todos')->orderBy('title', 'asc')->get();
         return view('category.index', compact('categories'));
     }
 
