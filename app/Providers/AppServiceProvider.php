@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('admin', function ($user) {
             return $user->is_admin == true;
         });
-        // Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
         Scramble::configure()->routes(function (Route $route) {
             return Str::startsWith($route->uri, 'api/');
         })->withDocumentTransformers(function (OpenApi $openApi) {

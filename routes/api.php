@@ -14,5 +14,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/todos/search', [TodoController::class, 'search']);
-    Route::resource('/todos', TodoController::class);
+    Route::apiResource('/todos', TodoController::class);
 });

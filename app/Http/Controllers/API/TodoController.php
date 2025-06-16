@@ -17,7 +17,7 @@ class TodoController extends Controller
      */
     #[
         Response(
-            status: 201,    
+            status: 201,
             content: [
                 'status_code' => 201,
                 'message' => 'Todo berhasil dibuat',
@@ -169,15 +169,19 @@ class TodoController extends Controller
     public function search(Request $request)
     {
         $query = $request->query('q');
-        $todos = Todo::where('user_id', Auth::id())->where(function ($q) use ($query) {
-            $q->where('title', 'like', "%{$query}%")->orWhereHas('category', function ($q) use ($query) {
-                $q->where('title', 'like', "%{$query}%")->where('user_id', Auth::id());
-            });
-        })->with('category')->get();
+        $todos = Todo::where('user_id', Auth::id())
+            ->where(function ($q) use ($query) {
+                $q->where('title', 'like', '%' . $query . '%')
+                    ->orWhereHas('category', function ($q) use ($query) {
+                        $q->where('title', 'like', '%' . $query . '%')->where('user_id', Auth::id());
+                    });
+            })
+            ->with('category')
+            ->get();
 
         return response()->json([
             'status_code' => 200,
-            'message' => 'Todo berhasil diambil',
+            'message' => 'Todo berhasil diambil nih',
             'data' => $todos
         ], 200);
     }
